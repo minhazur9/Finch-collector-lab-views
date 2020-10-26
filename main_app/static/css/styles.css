@@ -1,0 +1,17 @@
+.nav{
+    background-color: #D43B40;
+}
+
+body {
+    min-height: 100vh;
+}
+
+footer {
+    position: absolute;
+    bottom: 0
+}
+
+.nav-link {
+    color:white;
+    font-size: 25px
+}
