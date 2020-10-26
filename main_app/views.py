@@ -5,10 +5,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return HttpResponse('<h1>Hello</h1>')
+    return render(request,'home.html')
 
 def about(request):
-    return HttpResponse('<h1>About</h1>')
+    return render(request, 'about.html')
 
 def cars_index(request):
-    return HttpResponse('<h1>Cars</h1>')
+    return render(request, 'cars/index.html')
