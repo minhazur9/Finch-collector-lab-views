@@ -1,4 +1,9 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>List of Cars</h1>
-{% endblock  %}
+<ul>
+  {% for car in cars %}
+  <a href="#" class="car-link">
+    <li class="car-list-item">{{car.name}}</li>
+  </a>  
+</ul>
+{% endfor %} {% endblock %}
