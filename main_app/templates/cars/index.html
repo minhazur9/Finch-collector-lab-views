@@ -2,7 +2,7 @@
 <h1>List of Cars</h1>
 <ul>
   {% for car in cars %}
-  <a href="#" class="car-link">
+  <a href="{% url 'details' car.id %}" class="car-link">
     <li class="car-list-item">{{car.name}}</li>
   </a>  
 </ul>
