@@ -15,3 +15,7 @@ footer {
     color:white;
     font-size: 25px
 }
+
+.nav-link:hover{
+    color: black;
+}
