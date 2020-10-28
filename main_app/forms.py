@@ -1,6 +1,6 @@
 from django import forms
 from .models import Car
-from .models import Upgrades
+from .models import Upgrade
 
 
 class AddCarForm(forms.ModelForm):
@@ -10,5 +10,5 @@ class AddCarForm(forms.ModelForm):
 
 class AddUpgradeForm(forms.ModelForm):
     class Meta:
-        model = Upgrades
+        model = Upgrade
         fields = ['name', 'price']

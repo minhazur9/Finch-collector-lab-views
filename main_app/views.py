@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 
 from django.http import HttpResponse
 
@@ -10,26 +10,35 @@ from .forms import AddUpgradeForm
 
 # Create your views here.
 
+
 def home(request):
-    return render(request,'home.html')
+    return render(request, 'home.html')
+
 
 def about(request):
     return render(request, 'about.html')
 
+
 def cars_index(request):
     cars = Car.objects.all()
-    return render(request, 'cars/index.html',{"cars": cars})
+    return render(request, 'cars/index.html', {"cars": cars})
+
 
 def cars_details(request, car_id):
     car = Car.objects.get(id=car_id)
-    return render(request, 'cars/details.html',{"car":car})
+    add_upgrade = AddUpgradeForm()
+    return render(request, 'cars/details.html', {
+        "car": car,
+        "add_upgrade": add_upgrade
+    })
+
 
 def add_car(request):
-    add_form = AddCarForm(request.POST)
+    add_form = AddCarForm()
     return render(request, 'cars/add.html', {'add_form': add_form})
 
 
-def  create_Car(request):
+def create_Car(request):
     form = AddCarForm(request.POST)
 
     # if form is valid
@@ -40,7 +49,8 @@ def  create_Car(request):
 
     return redirect('index')
 
-def add_upgrade(request,car_id):
+
+def add_upgrade(request, car_id):
     form = AddUpgradeForm(request.POST)
 
     if form.is_valid():
@@ -49,8 +59,4 @@ def add_upgrade(request,car_id):
         new_form.car_id = car_id
         new_form.save()
 
-    return redirect('details',car_id=car_id)
-
-    
-
-
+    return redirect('details', car_id=car_id)

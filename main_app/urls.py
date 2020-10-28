@@ -7,6 +7,6 @@ urlpatterns = [
     path('cars/', views.cars_index, name='index'),
     path('cars/<int:car_id>/', views.cars_details, name='details'),
     path('cars/add/', views.add_car, name='add_car'),
-    path('cars/create_car/', views.create_Car, name='create-car'),
-    path('cars/add-upgrade',views.add_upgrade, name='add-upgrade')
+    path('cars/create_car/', views.create_Car, name='create_car'),
+    path('cars/<int:car_id>/add-upgrade',views.add_upgrade, name='add_upgrade')
 ]

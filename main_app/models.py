@@ -53,8 +53,11 @@ class Car(models.Model):
     def __str__(self):
         return self.name
 
-class Upgrades(models.Model):
-    name = models.CharField(max_length=100)
+class Upgrade(models.Model):
+    name = models.CharField(
+        max_length=100,
+        choices=CAR_UPGRADES
+    )
     price = models.IntegerField()
 
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
