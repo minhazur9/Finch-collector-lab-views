@@ -19,3 +19,35 @@ footer {
 .nav-link:hover{
     color: black;
 }
+
+.add-car-button {
+    position: relative;
+    display: inline;
+    background-color: #4D67DB;
+    border: 2px solid #4D67DB;
+    font-size: 20px;
+    top: 10px;
+    left: 25px;
+}
+
+.add-link {
+    color: white;
+}
+
+.add-link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.form-control {
+    width: 20%;
+}
+
+.add-form{
+    position: relative;
+    left: 25px;
+}
+
+.errorlist{
+    display: none;
+}

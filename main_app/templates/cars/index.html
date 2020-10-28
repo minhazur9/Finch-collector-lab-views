@@ -4,6 +4,10 @@
   {% for car in cars %}
   <a href="{% url 'details' car.id %}" class="car-link">
     <li class="car-list-item">{{car.name}}</li>
-  </a>  
+  </a>
+  {% endfor %}
 </ul>
-{% endfor %} {% endblock %}
+<div class="add-car-button">
+  <a href="/cars/add" class="add-link">Add Car</a>
+</div>
+{% endblock %}
