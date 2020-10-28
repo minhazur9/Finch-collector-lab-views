@@ -38,6 +38,16 @@ CAR_UPGRADES = (
     ('Less Restrictive Cold-Air Intake','Less Restrictive Cold-Air Intake'),
     ('Stainless-Steel Braided Brake Lines','Stainless-Steel Braided Brake Lines'),
 )
+
+class Extra(models.Model):
+    name = models.CharField(
+        max_length=100
+    )
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
 class Car(models.Model):
     name = models.CharField(max_length=100)
     brand = models.CharField(
@@ -49,6 +59,7 @@ class Car(models.Model):
         choices=COLORS
     )
     price = models.IntegerField()
+    extras = models.ManyToManyField(Extra)
 
     def __str__(self):
         return self.name

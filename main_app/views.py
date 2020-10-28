@@ -60,3 +60,11 @@ def add_upgrade(request, car_id):
         new_form.save()
 
     return redirect('details', car_id=car_id)
+
+def delete_car(request, car_id):
+    car = Car.objects.get(id=car_id).delete()
+
+    return redirect('index')
+
+def assoc_extra(request, car_id):
+    return redirect('details', car_id=car_id)
