@@ -1,15 +1,35 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>{{car.name}}</h1><br>
+{% extends 'base.html' %} {% block content %}
+<h1>{{car.name}}</h1>
+<br />
 <h2>Model: {{car.brand}}</h2>
 <h2>Color: {{car.color}}</h2>
 <h2>Price: ${{car.price}}</h2>
 <form action="{% url 'add_upgrade' car.id %}" method="POST">
-{% csrf_token %}
-{{ add_upgrade.as_p }}
-<button type="submit" class="btn btn-primary">Submit</button>
+  {% csrf_token %} {{ add_upgrade.as_p }}
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <form action="{% url 'delete_car' car.id %}" method="POST">
-{% csrf_token %}
-<button type="submit" class="btn btn-danger">Delete</button>
-{% endblock content %}
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+{% for upgrade in car.upgrade_set.all %}
+<h3 class="upgrade-list">{{upgrade.name}} - ${{upgrade.price}}</h3>
+{% endfor %}
+<h2>Available Extras</h2> 
+{% for extra in extras.all %}
+<h4 class="extras-listing">{{extra.name}}</h4>
+<form action="{% url 'assoc_extra' car.id extra.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit"class="btn btn-primary" value="Add">
+</form>
+{% endfor %}
+<div class="owned-extras">
+<h2>Owned Extras</h2> 
+{% for extra in car.extras.all %}
+<h4 class="extras-listing">{{extra.name}}</h4>
+<form action="{% url 'remove_assoc_extra' car.id extra.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit"class="btn btn-danger" value="Delete">
+</form>
+</div>
+{% endfor %} {% endblock content %}

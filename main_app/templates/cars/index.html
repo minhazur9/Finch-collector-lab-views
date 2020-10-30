@@ -7,7 +7,8 @@
   </a>
   {% endfor %}
 </ul>
-<div class="add-car-button">
-  <a href="/cars/add" class="add-link">Add Car</a>
-</div>
+<form action="/cars/add/" method="POST">
+    {% csrf_token %}
+    <input type="submit"class="btn btn-primary" value="Add">
+</form>
 {% endblock %}

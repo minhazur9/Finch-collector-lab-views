@@ -15,6 +15,7 @@
       type="text/css"
       href="{% static 'css/styles.css' %}"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"
       integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw=="
@@ -27,15 +28,28 @@
     <header>
       <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="{% url 'home' %} ">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/about">About</a>
+    <a class="nav-link" href="{% url 'about' %} ">About</a>
+  </li>
+  {% if user.is_authenticated %}
+  <li class="nav-item">
+    <a class="nav-link" href=" {% url 'index' %} ">Cars</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/cars">Cars</a>
+    <a class="nav-link" href="{% url 'logout' %}  ">Logout</a>
   </li>
 </ul>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link" href=" {% url 'signup' %} ">SignUp</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href=" {% url 'login' %} ">Login</a>
+  </li>
+  {% endif %}
+  
     </header>
     <main>{% block content %} {% endblock %}</main>
     <footer>All rights reserved</footer>
